@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(scanBasePackages = "net.chimaek.day0709")
+@SpringBootApplication(scanBasePackages = "net.chimaek.day0715")
 public class BasicApplication {
 
     @Value("${server.port}")
