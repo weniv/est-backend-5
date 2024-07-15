@@ -11,10 +11,7 @@ public class ThymeleafController {
     public String index(Model model) {
         User max = new User("max", "max@gmail.com", true);
 
-        model.addAttribute("username", max.getUsername());
-        model.addAttribute("email", max.getEmail());
-        model.addAttribute("admin", max.isAdmin());
-        model.addAttribute("okay",1);
+        model.addAttribute("user", max);
         return "index";
     }
 }
