@@ -14,7 +14,7 @@ public class ThymeleafController {
         model.addAttribute("username", max.getUsername());
         model.addAttribute("email", max.getEmail());
         model.addAttribute("admin", max.isAdmin());
-
+        model.addAttribute("okay",1);
         return "index";
     }
 }
