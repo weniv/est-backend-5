@@ -7,8 +7,9 @@
 <body>
 <h1>스프링부트 타임리프 홈페이지 테스트</h1>
 <div th:object="${user}">
-  <p>이름 : <span th:text="*{username}"></span></p>
+  <p>이름 : <span th:text="*{username}"> </span></p>
   <p>이메일 : <span th:text="*{email}"></span></p>
+  <p th:if="${user.admin}">이 사람은 관리자 권한이 있습니다.</p>
 </div>
 </body>
 </html>

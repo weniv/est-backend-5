@@ -9,7 +9,7 @@ public class ThymeleafController {
 
     @GetMapping("/index")
     public String index(Model model) {
-        User max = new User("max", "max@gmail.com", true);
+        User max = new User("max", "max@gmail.com", false);
 
         model.addAttribute("user", max);
         return "index";
