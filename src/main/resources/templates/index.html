@@ -9,7 +9,14 @@
 <div th:object="${user}">
   <p>이름 : <span th:text="*{username}"> </span></p>
   <p>이메일 : <span th:text="*{email}"></span></p>
-  <p th:if="${user.admin}">이 사람은 관리자 권한이 있습니다.</p>
+  <p th:unless="${user.admin}">이 사람은 관리자 권한이 있습니다.</p>
+
+  <p th:if="${user.person}">이 사람은 관리자 권한이 있습니다.:if</p>
+  <p th:unless="${user.person}">이 사람은 관리자 권한이 있습니다.:unless</p>
 </div>
+<ul th:each="item :${iterData}">
+  <li th:text="${item}"></li>
+</ul>
+<!--/* 이 주석은 Thymeleaf에서 처리되지 않습니다. */-->
 </body>
 </html>
