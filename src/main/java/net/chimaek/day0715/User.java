@@ -15,5 +15,6 @@ public class User {
     private String email;
     private boolean admin;
     private boolean person;
+    private String name;
 
 }
