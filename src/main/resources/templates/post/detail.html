@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>게시글 상세보기</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<h1>게시글 상세보기</h1>
+<div class="post-detail">
+  <h2 th:text="${post.title}"></h2>
+  <p class="post-meta">
+    작성일: <span th:text="${post.createAt}"></span>
+  </p>
+  <div class="post-content" th:text="${post.content}"></div>
+  <a th:href="@{/posts}">목록으로</a>
+</div>
+</body>
+</html>

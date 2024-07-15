@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>게시판</title>
-  <link rel="stylesheet" th:href="@{/css/style.css}" />
+  <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 <body>
 <h1>게시글 목록</h1>
@@ -17,7 +17,10 @@
   <tbody>
   <tr th:each="post : ${posts}">
     <td th:text="${post.id}"></td>
-    <td th:text="${post.title}"></td>
+    <td>
+      <a th:href="@{/posts/{id}(id=${post.id})}" th:text="${post.title}">
+      </a>
+    </td>
     <td th:text="${post.createAt}"></td>
   </tr>
   </tbody>
