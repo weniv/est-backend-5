@@ -15,7 +15,15 @@ public class ThymeleafController {
         model.addAttribute("user", max);
         model.addAttribute("iterData", iterData);
 
-
         return "index";
+    }
+    @GetMapping("/index/2")
+    public String index2(Model model){
+        return "index2";
+    }
+
+    @GetMapping("/index/3")
+    public String index3(Model model){
+        return "index3";
     }
 }
