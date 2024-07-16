@@ -55,4 +55,15 @@ public class PostController {
        return "redirect:/posts";
     }
 
+    @GetMapping("/{id}/edit")
+    public String editForm(@PathVariable("id") Long id,Model model){
+        Post post = posts.stream()
+            .filter(p -> p.getId() == id)
+            .findFirst()
+            .orElseThrow(() -> new IllegalArgumentException());
+
+        model.addAttribute("post",post);
+        return "post/edit";
+    }
+
 }
