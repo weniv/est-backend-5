@@ -14,7 +14,8 @@
   <div class="post-content" th:text="${post.content}"></div>
   <div class="post-actions">
     <a th:href="@{/posts}">목록으로</a>
-    <form th:action="@{/posts/{id}/delete(id=${post.id})}" method="post">
+    <a th:href="@{/posts/{id}/edit(id=${post.id})}" class="edit-btn">수정</a>
+    <form th:action="@{/posts/{id}/delete(id=${post.id})}" method="post" class="delete-form">
       <button type="submit">삭제</button>
     </form>
   </div>
