@@ -1,8 +1,12 @@
 {
-  "name": "max",
-
-  "user": {
-    "userId": "good",
-    "password": "test"
+  "1": {
+    "name": "max",
+    "password": "test",
+    "id": 1
+  },
+  "2": {
+    "name": "max",
+    "password": "test",
+    "id": 1
   }
 }
