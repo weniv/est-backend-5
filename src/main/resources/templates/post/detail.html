@@ -12,7 +12,12 @@
     작성일: <span th:text="${post.createAt}"></span>
   </p>
   <div class="post-content" th:text="${post.content}"></div>
-  <a th:href="@{/posts}">목록으로</a>
+  <div class="post-actions">
+    <a th:href="@{/posts}">목록으로</a>
+    <form th:action="@{/posts/{id}/delete(id=${post.id})}" method="post">
+      <button type="submit">삭제</button>
+    </form>
+  </div>
 </div>
 </body>
 </html>
