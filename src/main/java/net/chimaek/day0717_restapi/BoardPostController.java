@@ -58,9 +58,17 @@ public class BoardPostController {
     @PostMapping("/{postId}/comments")
     public ResponseEntity<CommentDto> createComment(
         @PathVariable("postId") Long postId, @RequestBody CommentDto createCommentDto
-    ){
-        CommentDto createdCommentDto = boardPostService.createComment(postId,createCommentDto);
+    ) {
+        CommentDto createdCommentDto = boardPostService.createComment(postId, createCommentDto);
         return ResponseEntity.ok(createdCommentDto);
+    }
+
+    @DeleteMapping("/{postId}/comments/{commentId}")
+    public ResponseEntity<Void> deleteComment(
+        @PathVariable("postId") Long postId, @PathVariable("commentId") Long commentId
+    ) {
+        boardPostService.deleteComment(postId, commentId);
+        return ResponseEntity.noContent().build();
     }
 
 }
