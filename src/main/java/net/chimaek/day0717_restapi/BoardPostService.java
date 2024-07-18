@@ -1,5 +1,6 @@
 package net.chimaek.day0717_restapi;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,8 +15,10 @@ public class BoardPostService {
 
     public BoardPostDto createBoardPost(BoardPostDto boardPostDto) {
         BoardPost boardPost = convertToBoardPostEntity(boardPostDto);
-
-
+        boardPost.setId(nextPostId++);
+        boardPost.setCreatedAt(LocalDateTime.now());
+        boardPosts.add(boardPost);
+        return convertToBoardPostDto(boardPost);
     }
 
     private static BoardPost convertToBoardPostEntity(BoardPostDto boardPostDto) {
