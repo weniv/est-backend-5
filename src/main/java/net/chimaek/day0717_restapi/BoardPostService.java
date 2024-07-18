@@ -92,6 +92,7 @@ public class BoardPostService {
     public void deleteBoardPost(Long id) {
         BoardPost boardPost = findBoardPostById(id);
         boardPosts.remove(boardPost);
+        log.info("삭제성공하였습니다.");
 
     }
 
@@ -101,4 +102,5 @@ public class BoardPostService {
             .findFirst()
             .orElseThrow(() -> new IllegalArgumentException("id에 해당하는 글을 찾을 수 없습니다."));
     }
+
 }
