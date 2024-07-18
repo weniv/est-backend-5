@@ -90,9 +90,15 @@ public class BoardPostService {
     }
 
     public void deleteBoardPost(Long id) {
-        boardPosts.stream()
-            .filter(post->post.getId().equals(id))
+        BoardPost boardPost = findBoardPostById(id);
+        boardPosts.remove(boardPost);
+
+    }
+
+    private BoardPost findBoardPostById(Long id) {
+        return boardPosts.stream()
+            .filter(post -> post.getId().equals(id))
             .findFirst()
-            .orElseThrow(()->new IllegalArgumentException("id에 해당하는 글을 찾을 수 없습니다."));
+            .orElseThrow(() -> new IllegalArgumentException("id에 해당하는 글을 찾을 수 없습니다."));
     }
 }
