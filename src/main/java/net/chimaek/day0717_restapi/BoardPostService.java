@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class BoardPostService {
+
     List<BoardPost> boardPosts = new ArrayList<>();
     private Long nextPostId = 1L;
     private Long nextCommentId = 1L;
@@ -22,7 +23,7 @@ public class BoardPostService {
         boardPost.setTitle(boardPostDto.getTitle());
         boardPost.setContent(boardPostDto.getContent());
         boardPost.setAuthor(boardPostDto.getAuthor());
-        if(boardPostDto.getComments()!=null){
+        if (boardPostDto.getComments() != null) {
             boardPostDto.getComments().forEach(commentDto -> {
                 Comment comment = convertToCommentEntity(commentDto);
                 comment.setBoardPost(boardPost);
@@ -33,7 +34,15 @@ public class BoardPostService {
         return boardPost;
     }
 
-    private static BoardPostDto convertToBoardPostDto(BoardPost boardPost){
+    private static Comment convertToCommentEntity(CommentDto commentDto) {
+        Comment comment = new Comment();
+        comment.setId(commentDto.getId());
+        comment.setContent(commentDto.getContent());
+        comment.setAuthor(commentDto.getAuthor());
+        return comment;
+    }
+
+    private BoardPostDto convertToBoardPostDto(BoardPost boardPost) {
         BoardPostDto boardPostDto = new BoardPostDto();
         boardPostDto.setId(boardPost.getId());
         boardPostDto.setTitle(boardPost.getTitle());
@@ -42,12 +51,21 @@ public class BoardPostService {
         boardPostDto.setCreatedAt(boardPost.getCreatedAt());
         boardPostDto.setUpdatedAt(boardPost.getUpdatedAt());
 
-        if(boardPost.getComments()!=null){
+        if (boardPost.getComments() != null) {
             boardPostDto.setComments(
-                boardPost.getComments().stream().map(this::convertToCommentDto)
+                boardPost.getComments().stream().map(BoardPostService::convertToCommentDto)
                     .collect(Collectors.toList())
             );
         }
         return boardPostDto;
     }
+    private static CommentDto convertToCommentDto(Comment comment){
+        CommentDto commentDto = new CommentDto();
+        commentDto.setId(comment.getId());
+        commentDto.setContent(comment.getContent());
+        commentDto.setAuthor(comment.getAuthor());
+        commentDto.setCreatedAt(comment.getCreatedAt());
+        return commentDto;
+    }
+
 }
