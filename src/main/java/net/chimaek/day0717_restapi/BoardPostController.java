@@ -55,4 +55,12 @@ public class BoardPostController {
         return ResponseEntity.ok(updatedBoardPostDto);
     }
 
+    @PostMapping("/{postId}/comments")
+    public ResponseEntity<CommentDto> createComment(
+        @PathVariable("postId") Long postId, @RequestBody CommentDto createCommentDto
+    ){
+        CommentDto createdCommentDto = boardPostService.createComment(postId,createCommentDto);
+        return ResponseEntity.ok(createdCommentDto);
+    }
+
 }

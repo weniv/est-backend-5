@@ -110,4 +110,13 @@ public class BoardPostService {
         boardPost.setUpdatedAt(LocalDateTime.now());
         return convertToBoardPostDto(boardPost);
     }
+
+    public CommentDto createComment(Long postId, CommentDto createCommentDto) {
+        BoardPost boardPost = findBoardPostById(postId);
+        Comment comment = convertToCommentEntity(createCommentDto);
+        comment.setId(nextCommentId++);
+        comment.setCreatedAt(LocalDateTime.now());
+        boardPost.addComment(comment);
+        return convertToCommentDto(comment);
+    }
 }
