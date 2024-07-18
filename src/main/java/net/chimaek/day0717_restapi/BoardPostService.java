@@ -88,4 +88,11 @@ public class BoardPostService {
             .findFirst()
             .orElseThrow(() -> new IllegalArgumentException("id에 해당하는 글을 찾을 수 없습니다."));
     }
+
+    public void deleteBoardPost(Long id) {
+        boardPosts.stream()
+            .filter(post->post.getId().equals(id))
+            .findFirst()
+            .orElseThrow(()->new IllegalArgumentException("id에 해당하는 글을 찾을 수 없습니다."));
+    }
 }
