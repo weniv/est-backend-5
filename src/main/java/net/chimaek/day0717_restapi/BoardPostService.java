@@ -103,4 +103,11 @@ public class BoardPostService {
             .orElseThrow(() -> new IllegalArgumentException("id에 해당하는 글을 찾을 수 없습니다."));
     }
 
+    public BoardPostDto updateBoardPost(Long id, BoardPostDto updateBoardPostDto) {
+        BoardPost boardPost = findBoardPostById(id);
+        boardPost.setTitle(updateBoardPostDto.getTitle());
+        boardPost.setContent(updateBoardPostDto.getContent());
+        boardPost.setUpdatedAt(LocalDateTime.now());
+        return convertToBoardPostDto(boardPost);
+    }
 }
