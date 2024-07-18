@@ -62,7 +62,8 @@ public class BoardPostService {
         }
         return boardPostDto;
     }
-    private static CommentDto convertToCommentDto(Comment comment){
+
+    private static CommentDto convertToCommentDto(Comment comment) {
         CommentDto commentDto = new CommentDto();
         commentDto.setId(comment.getId());
         commentDto.setContent(comment.getContent());
@@ -75,6 +76,13 @@ public class BoardPostService {
         return boardPosts.stream()
             .map(this::convertToBoardPostDto)
             .collect(Collectors.toList());
+    }
 
+    public BoardPostDto getBoardPostDtoById(Long id) {
+        return boardPosts.stream()
+            .filter(post -> post.getId().equals(id))
+            .map(this::convertToBoardPostDto)
+            .findFirst()
+            .orElseThrow(() -> new IllegalArgumentException("id에 해당하는 글을 찾을 수 없습니다."));
     }
 }

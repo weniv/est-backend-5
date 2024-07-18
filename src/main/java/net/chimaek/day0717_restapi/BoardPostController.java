@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +31,12 @@ public class BoardPostController {
     public ResponseEntity<List<BoardPostDto>> getAllBoardPosts(){
         List<BoardPostDto> boardPostDtos =  boardPostService.getAllBoardPosts();
         return ResponseEntity.ok(boardPostDtos);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<BoardPostDto> getBoardPostById(@PathVariable("id") Long id){
+        BoardPostDto boardPostDto = boardPostService.getBoardPostDtoById(id);
+        return ResponseEntity.ok(boardPostDto);
     }
 
 }
