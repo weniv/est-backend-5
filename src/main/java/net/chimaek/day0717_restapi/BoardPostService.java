@@ -71,4 +71,10 @@ public class BoardPostService {
         return commentDto;
     }
 
+    public List<BoardPostDto> getAllBoardPosts() {
+        return boardPosts.stream()
+            .map(this::convertToBoardPostDto)
+            .collect(Collectors.toList());
+
+    }
 }
