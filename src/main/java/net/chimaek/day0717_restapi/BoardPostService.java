@@ -15,6 +15,7 @@ public class BoardPostService {
     private Long nextPostId = 1L;
     private Long nextCommentId = 1L;
 
+    @LogExecutionTime
     public BoardPostDto createBoardPost(BoardPostDto boardPostDto) {
         BoardPost boardPost = convertToBoardPostEntity(boardPostDto);
         boardPost.setId(nextPostId++);
@@ -73,7 +74,7 @@ public class BoardPostService {
         commentDto.setCreatedAt(comment.getCreatedAt());
         return commentDto;
     }
-
+    @LogExecutionTime
     public List<BoardPostDto> getAllBoardPosts() {
         return boardPosts.stream()
             .map(this::convertToBoardPostDto)
